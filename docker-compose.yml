@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: quoccuong_applestore_db
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: quoccuong_applestore
+      MYSQL_USER: springstudent
+      MYSQL_PASSWORD: springstudent
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    ports:
+      - "3308:3306"
+  be:
+    build:
+      context: ./backend     # Đường dẫn đến thư mục chứa source code Spring Boot
+      dockerfile: Dockerfile
+    container_name: backend_container
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://quoccuong_applestore_db:3306/quoccuong_applestore
+      SPRING_DATASOURCE_USERNAME: springstudent
+      SPRING_DATASOURCE_PASSWORD: springstudent
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update # Hibernate sẽ tự động cập nhật database schema
+    depends_on:
+      - mysql
+  fe:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend_container
+    ports:
+      - "3000:3000"
+    depends_on:
+      - be
+
