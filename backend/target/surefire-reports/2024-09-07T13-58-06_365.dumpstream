@@ -1,0 +1,5 @@
+# Created at 2024-09-07T13:58:06.818
+Boot Manifest-JAR contains absolute paths in classpath 'E:\quoccuong-applestore\backend\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
