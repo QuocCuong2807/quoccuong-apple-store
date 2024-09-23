@@ -1,1 +1,9 @@
 E:\quoccuong-applestore\backend\src\test\java\com\springteam\backend\BackendApplicationTests.java
+E:\quoccuong-applestore\backend\src\test\java\com\springteam\backend\controller\CategoryControllerTest.java
+E:\quoccuong-applestore\backend\src\test\java\com\springteam\backend\controller\DashboardControllerTest.java
+E:\quoccuong-applestore\backend\src\test\java\com\springteam\backend\controller\ProductControllerTest.java
+E:\quoccuong-applestore\backend\src\test\java\com\springteam\backend\controller\ProductRatingControllerTest.java
+E:\quoccuong-applestore\backend\src\test\java\com\springteam\backend\service\CategoryServiceTest.java
+E:\quoccuong-applestore\backend\src\test\java\com\springteam\backend\service\DashboardServiceTest.java
+E:\quoccuong-applestore\backend\src\test\java\com\springteam\backend\service\ProductServiceTest.java
+E:\quoccuong-applestore\backend\src\test\java\com\springteam\backend\service\RatingServiceTest.java
