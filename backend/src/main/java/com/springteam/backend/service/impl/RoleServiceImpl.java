@@ -1,8 +1,9 @@
-package com.springteam.backend.service;
+package com.springteam.backend.service.impl;
 
 import com.springteam.backend.entity.Role;
 import com.springteam.backend.exception.RoleNotFoundException;
 import com.springteam.backend.repository.IRoleRepository;
+import com.springteam.backend.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

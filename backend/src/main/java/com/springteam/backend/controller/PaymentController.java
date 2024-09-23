@@ -1,12 +1,10 @@
 package com.springteam.backend.controller;
 
-import com.springteam.backend.config.VNPayConfig;
 import com.springteam.backend.dto.CartDto;
 import com.springteam.backend.dto.PaymentResponse;
 import com.springteam.backend.service.IOrderService;
 import com.springteam.backend.service.IPaymentService;
 import com.springteam.backend.service.MailSenderService;
-import com.springteam.backend.service.PaymentServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,10 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")

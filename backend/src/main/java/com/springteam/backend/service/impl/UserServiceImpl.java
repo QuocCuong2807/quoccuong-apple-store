@@ -1,7 +1,8 @@
-package com.springteam.backend.service;
+package com.springteam.backend.service.impl;
 
 import com.springteam.backend.entity.UserEntity;
 import com.springteam.backend.repository.IUserRepository;
+import com.springteam.backend.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

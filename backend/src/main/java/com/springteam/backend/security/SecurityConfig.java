@@ -36,20 +36,18 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable());
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.GET, "/api/dashboard/**").hasAuthority("ADMIN")
-                        .requestMatchers(HttpMethod.POST,"/api/category/**").hasAnyAuthority("ADMIN")
-                        .requestMatchers(HttpMethod.PUT,"/api/category/**").hasAnyAuthority("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE,"/api/category/**").hasAnyAuthority("ADMIN")
-                        .requestMatchers(HttpMethod.POST,"/api/product/**").hasAnyAuthority("ADMIN")
-                        .requestMatchers(HttpMethod.PUT,"/api/product/**").hasAnyAuthority("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE,"/api/product/**").hasAnyAuthority("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/category/**").hasAnyAuthority("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/category/**").hasAnyAuthority("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/category/**").hasAnyAuthority("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/product/**").hasAnyAuthority("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/product/**").hasAnyAuthority("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/product/**").hasAnyAuthority("ADMIN")
                         .requestMatchers("/api/order/orders/**").hasAnyAuthority("ADMIN")
-                        .requestMatchers(HttpMethod.POST,"/api/rating/new-rating").hasAnyAuthority("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/rating/new-rating").hasAnyAuthority("USER", "ADMIN")
                         .anyRequest().permitAll())
                 .exceptionHandling(exc -> exc.authenticationEntryPoint(authenticationEntryPoint))
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-
         return http.build();
-
     }
 
     @Bean

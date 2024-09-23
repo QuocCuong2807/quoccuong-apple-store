@@ -1,7 +1,8 @@
-package com.springteam.backend.service;
+package com.springteam.backend.service.impl;
 
 import com.springteam.backend.config.VNPayConfig;
 import com.springteam.backend.dto.PaymentResponse;
+import com.springteam.backend.service.IPaymentService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
-public class PaymentServiceImpl implements IPaymentService{
+public class PaymentServiceImpl implements IPaymentService {
     private VNPayConfig vnPayConfig;
 
     @Autowired

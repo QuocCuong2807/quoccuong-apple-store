@@ -5,11 +5,14 @@ import com.springteam.backend.dto.ProductDto;
 import com.springteam.backend.dto.ProductOverviewResponse;
 import com.springteam.backend.dto.ProductResponse;
 import com.springteam.backend.entity.Product;
+import com.springteam.backend.service.ICategoryService;
 import com.springteam.backend.service.IProductService;
+import com.springteam.backend.service.impl.CategoryServiceImpl;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +29,6 @@ import java.util.Optional;
 public class ProductController {
 
     private IProductService productService;
-
     @Autowired
     public ProductController(IProductService productService) {
         this.productService = productService;

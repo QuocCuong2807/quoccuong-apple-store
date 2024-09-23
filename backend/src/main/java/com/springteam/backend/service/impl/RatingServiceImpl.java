@@ -1,4 +1,4 @@
-package com.springteam.backend.service;
+package com.springteam.backend.service.impl;
 
 import com.springteam.backend.dto.ProductRatingDto;
 import com.springteam.backend.dto.ProductResponse;
@@ -11,9 +11,11 @@ import com.springteam.backend.exception.ProductNotFoundException;
 import com.springteam.backend.repository.IProductRepository;
 import com.springteam.backend.repository.IRatingRepository;
 import com.springteam.backend.repository.IUserRepository;
+import com.springteam.backend.service.IRatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 

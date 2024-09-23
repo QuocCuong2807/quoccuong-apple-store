@@ -1,6 +1,8 @@
 package com.springteam.backend.dto;
 
 import com.springteam.backend.annotation.IsNumber;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -17,13 +19,14 @@ public class ProductRatingDto {
     @NotBlank
     private String userName;
     @NotNull
-    @NotBlank
+    @Min(0)
+    @Max(5)
     private int star;
     @NotNull
     @NotBlank
     private String ratingContent;
     @NotNull
-    @NotBlank
+    @Min(1)
     private Long productId;
     @NotNull
     private String date;

@@ -4,6 +4,7 @@ import com.springteam.backend.dto.ProductRatingDto;
 import com.springteam.backend.dto.RatingResponse;
 import com.springteam.backend.dto.StarRatingOverviewDto;
 import com.springteam.backend.service.IRatingService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class ProductRatingController {
     }
 
     @PostMapping("/new-rating")
-    public ResponseEntity<String> addNewProductRating(@RequestBody ProductRatingDto productRatingDto, BindingResult bindingResult) {
+    public ResponseEntity<String> addNewProductRating(@Valid @RequestBody ProductRatingDto productRatingDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return new ResponseEntity<>("vui lòng nhập đủ thông tin đánh giá", HttpStatus.BAD_REQUEST);
 

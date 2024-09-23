@@ -32,21 +32,19 @@ public class CategoryController {
         if (queryString.equals(""))
             categoryResponse = categoryService.getAllCategories(pageable);
         else
-            categoryResponse = categoryService.getAllCategoriesByName(name.get(), pageable);
+            categoryResponse = categoryService.getAllCategoriesByName(queryString, pageable);
         return new ResponseEntity<>(categoryResponse, HttpStatus.OK);
     }
 
     @GetMapping("/v2/categories")
     public ResponseEntity<List<ProductCategoryDto>> getAllProductCategories() {
-
         List<ProductCategoryDto> categories = categoryService.getAllCategories();
-
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
     @PostMapping("/category")
     public ResponseEntity<String> addNewProductCategory(@RequestBody ProductCategoryDto categoryDto) {
-        categoryService.insertNewCategory(categoryDto);
+        categoryService.insertNewCategory(categoryDto); //void
         return new ResponseEntity<>("success", HttpStatus.CREATED);
     }
 
@@ -54,7 +52,6 @@ public class CategoryController {
     public ResponseEntity<String> editExistProductCategory(@RequestBody ProductCategoryDto categoryDto) {
         categoryService.updateExistedCategory(categoryDto);
         return new ResponseEntity<>("success", HttpStatus.OK);
-
     }
 
     @DeleteMapping("/category/{id}")

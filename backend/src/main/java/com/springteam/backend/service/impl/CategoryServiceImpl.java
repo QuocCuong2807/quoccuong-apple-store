@@ -1,4 +1,4 @@
-package com.springteam.backend.service;
+package com.springteam.backend.service.impl;
 
 import com.springteam.backend.dto.ProductCategoryDto;
 import com.springteam.backend.dto.ProductCategoryResponse;
@@ -6,6 +6,7 @@ import com.springteam.backend.entity.ProductCategory;
 import com.springteam.backend.exception.CategoryNotFoundException;
 import com.springteam.backend.exception.EmptyCategoryException;
 import com.springteam.backend.repository.ICategoryRepository;
+import com.springteam.backend.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 @Service
 public class CategoryServiceImpl implements ICategoryService {

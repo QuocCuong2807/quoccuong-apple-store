@@ -1,8 +1,9 @@
-package com.springteam.backend.service;
+package com.springteam.backend.service.impl;
 
 import com.springteam.backend.dto.DataChartDto;
 import com.springteam.backend.repository.IOrderRepository;
 import com.springteam.backend.repository.IProductRepository;
+import com.springteam.backend.service.IDashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

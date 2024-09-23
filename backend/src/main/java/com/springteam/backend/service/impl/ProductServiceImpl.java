@@ -1,4 +1,4 @@
-package com.springteam.backend.service;
+package com.springteam.backend.service.impl;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -15,6 +15,7 @@ import com.springteam.backend.exception.ProductNotFoundException;
 import com.springteam.backend.repository.ICategoryRepository;
 import com.springteam.backend.repository.IProductImagesRepository;
 import com.springteam.backend.repository.IProductRepository;
+import com.springteam.backend.service.IProductService;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -51,14 +52,13 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public ProductResponse getAllProducts(String filteredCategory, String filteredPrice, int p) {
+    public ProductResponse getAllProducts(String filteredCategory, String filteredPrice, int p)   {
         Page<Product> page;
         if (!isDigit(filteredCategory)) {
             page = fillDataByPriceFilter(filteredPrice, p);
         } else {
             page = fillDataByCategoryAndPriceFilter(filteredCategory, filteredPrice, p);
         }
-
 
         //convert Product list to ProductDto List
         List<ProductDto> productDtoList = page.get().toList()
@@ -152,7 +152,6 @@ public class ProductServiceImpl implements IProductService {
                                 )
                                 .build())
                         .collect(Collectors.toList());
-
         return productOverviewResponses;
     }
 
@@ -251,12 +250,12 @@ public class ProductServiceImpl implements IProductService {
                             .build())
                     .collect(Collectors.toList());
 
-
             //upload new images
             newMainImage = cloudinaryUploadImage(imageFile).get("secure_url").toString();
             existedProduct.setMainImage(newMainImage);
             existedProduct.setImagesList(productImagesList);
-        } else if (imageFile == null && images != null) {
+        }
+        else if (imageFile == null && images != null) {
             //delete all image description
             productImagesList.forEach(img -> {
                 deleteCloudinaryImage(img.getImage());
@@ -271,7 +270,8 @@ public class ProductServiceImpl implements IProductService {
                             .build())
                     .collect(Collectors.toList());
             existedProduct.setImagesList(productImagesList);
-        } else if (imageFile != null && images == null) {
+        }
+        else if (imageFile != null && images == null) {
             deleteCloudinaryImage(existedProduct.getMainImage());
             newMainImage = cloudinaryUploadImage(imageFile).get("secure_url").toString();
             existedProduct.setMainImage(newMainImage);
@@ -295,8 +295,6 @@ public class ProductServiceImpl implements IProductService {
         product.getImagesList().forEach(img -> img.getImage());
         productRepository.delete(product);
     }
-
-
 
 
     private boolean isDigit(String s) {
@@ -349,7 +347,6 @@ public class ProductServiceImpl implements IProductService {
         return null;
     }
 
-
     private void deleteCloudinaryImage(String mainImageUrl) {
         String mainPublicId = getPublicIdFromImageUrl(mainImageUrl);
 
@@ -365,7 +362,7 @@ public class ProductServiceImpl implements IProductService {
 
         Map data;
         Map params = ObjectUtils.asMap(
-                "folder", "apple-store",
+                "folder", "docker",
                 "resource_type", "image"
         );
         try {

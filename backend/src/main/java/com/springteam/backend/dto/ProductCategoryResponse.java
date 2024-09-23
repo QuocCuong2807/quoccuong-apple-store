@@ -1,11 +1,12 @@
 package com.springteam.backend.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Getter
 @Setter
@@ -17,4 +18,6 @@ public class ProductCategoryResponse {
     private int totalPage;
     private boolean isFirstPage;
     private boolean isLastPage;
+
+
 }

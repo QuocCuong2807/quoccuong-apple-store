@@ -1,4 +1,4 @@
-package com.springteam.backend.service;
+package com.springteam.backend.service.impl;
 
 import com.springteam.backend.dto.*;
 import com.springteam.backend.entity.Order;
@@ -6,6 +6,7 @@ import com.springteam.backend.entity.OrderDetail;
 import com.springteam.backend.exception.OrderNotFoundException;
 import com.springteam.backend.repository.IOrderRepository;
 import com.springteam.backend.repository.IProductRepository;
+import com.springteam.backend.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,9 +40,21 @@ public class OrderServiceImpl implements IOrderService {
         addressStringBuilder.append(", ");
         addressStringBuilder.append(ward);
 
-        Order order = Order.builder().address(addressStringBuilder.toString()).customerFullName(cart.getCustomerFullName()).email(cart.getEmail()).phoneNumber(cart.getPhoneNumber()).date(LocalDate.now()).totalPrice(cart.getCartTotalPrice()).build();
+        Order order = Order.builder()
+                .address(addressStringBuilder.toString())
+                .customerFullName(cart.getCustomerFullName())
+                .email(cart.getEmail()).phoneNumber(cart.getPhoneNumber())
+                .date(LocalDate.now())
+                .totalPrice(cart.getCartTotalPrice())
+                .build();
 
-        List<OrderDetail> orderDetailList = cart.getCartItem().stream().map(item -> OrderDetail.builder().order(order).product(productRepository.findById(item.getId()).get()).productQuantity(item.getQuantity()).productPrice(item.getPrice()).build()).collect(Collectors.toList());
+        List<OrderDetail> orderDetailList = cart.getCartItem().stream()
+                .map(item -> OrderDetail.builder()
+                        .order(order)
+                        .product(productRepository.findById(item.getId()).get())
+                        .productQuantity(item.getQuantity())
+                        .productPrice(item.getPrice()).build())
+                .collect(Collectors.toList());
 
         order.setOrderDetails(orderDetailList);
         if (cart.getPaymentMethod().equals(VN_PAY_METHOD)) order.setPaid(true);
