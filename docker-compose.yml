@@ -10,7 +10,7 @@ services:
       MYSQL_USER: springstudent
       MYSQL_PASSWORD: springstudent
     volumes:
-      - ./backend/mysql_data:/var/lib/mysql
+      - ./mysql_data:/var/lib/mysql
     ports:
       - "3308:3306"
   be:
